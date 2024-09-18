@@ -1,0 +1,24 @@
+%this function performs softmax
+function [outImage] = convolve(inImage,layerNumber)
+    load 'CNNparameters.mat'
+    biasvec  = biasvectors{layerNumber};
+    filter = filterbanks{layerNumber};
+    for k = 1:size(inImage,3)
+      for j = 1:size(inImage,2)
+        for i = 1:size(inImage,1)
+          inImage(i,j,k) = double(inImage(i,j,k);
+        end;
+      end;
+    end;
+    for l = 1:length(biasvec)
+         temp = biasvec(l);
+         for k = 1:size(inImage,3)
+
+               temp = temp + imfilter(inImage(:,:,k),filter(:,:,k,l),'conv');
+          end;
+          outImage(:,:,l) = temp;% + biasvec(l);
+    end;
+    %outImage = inImage;
+    %disp(layerNumber)
+
+    

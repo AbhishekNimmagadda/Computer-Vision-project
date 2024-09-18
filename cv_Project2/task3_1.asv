@@ -1,0 +1,11 @@
+%this function takes 
+function [xyPlots] = task3_1(pts3D,Parameters)
+    for i = 1:39
+        worldCord = pts3D(:,i);
+        worldCord(4,1)=1;
+        pixelCords = Parameters.Kmat*Parameters.Pmat*worldCord;
+        pixelCords(1,1)=pixelCords(1,1)/pixelCords(3,1);
+        pixelCords(2,1)=pixelCords(2,1)/pixelCords(3,1);
+        pixelCords(3,1)=pixelCords(3,1)/pixelCords(3,1);
+        xyPlots(:,i)=pixelCords;
+    end
